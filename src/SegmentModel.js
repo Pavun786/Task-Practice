@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-function SegmentModel() {
+function SegmentModel({status,setStatus}) {
     const [segmentName,setSegmentName] = useState("")
     const [selectData, setSelectData] = useState([])
     const [listData, setListData] = useState([])
@@ -27,8 +27,16 @@ function SegmentModel() {
     const reOrder = (value,index)=>{
     
       let res = listData.filter((ele,ind)=> ind !==index)
-      res.splice(index,0,value)
+      res.splice(index,0,value) // used to replace the word that place
       setListData([...res])
+    }
+
+
+    const removeFunction =(value)=>{
+
+        let temp= listData.filter((ele)=> ele !== value)
+
+        setListData(temp)
     }
 
 
@@ -49,18 +57,25 @@ function SegmentModel() {
 
      console.log(final)
 
+     alert(JSON.stringify(final, null, 2));
+       setListData([])
+       setSelectData([])
+       setSegmentName("")
   }
 
 
-   
+  console.log(listData)   
 
     return (
         <div className="segment-model-container">
-
-            <div> Saving Segment</div>
             <div>
+            <div className="model-heading"> Saving Segment</div>
+            <div className="model-field-1">
                 <label>Enter the Name of the Segment</label>
-                <input type="text" placeholder="Name of segment" 
+                <input type="text"
+                 className="input"
+                 value={segmentName}
+                  placeholder="Name of segment" 
                 onChange={(e)=> setSegmentName(e.target.value)}/>
 
              <p>To Save your segment,you need to add the schemas to build the query </p>
@@ -69,6 +84,7 @@ function SegmentModel() {
             <div className="blue-box">
                
            {listData.map((item,index) => (
+                   <div className="select-list-items">
                     <select key={item} className="selection" 
                      onChange={(e)=>reOrder(e.target.value,index)}>
 
@@ -83,26 +99,30 @@ function SegmentModel() {
                             </option>
                         ))}
                     </select>
+                     <button onClick={()=>removeFunction(item)}>-</button>
+                   </div>
+
                 ))}
           </div>
 
             <div className="sub3">
 
-                <select value={selectedOption} onChange={selectOption} >
+                <select value={selectedOption} onChange={selectOption} className="selection-drop" >
                    <option>Add schema to segment </option> 
-                    <option value="first_name">First Name</option>
-                    <option value="last_name">Last Name</option>
-                    <option value="gender">Gender</option>
-                    <option value="age">Age</option>
-                    <option value="account_name">Account Name</option>
+                    <option value="first_name" disabled={listData.includes("first_name")}>First Name</option>
+                    <option value="last_name" disabled={listData.includes("last_name")}>Last Name</option>
+                    <option value="gender"  disabled={listData.includes("gender")}>Gender</option>
+                    <option value="age" disabled={listData.includes("age")}>Age</option>
+                    <option value="account_name" disabled={listData.includes("account_name")}>Account Name</option>
                 </select>
 
         <div onClick={addSchema} className="add-btn">+Add new schema</div>
         </div>
 
-
-            <div>
-                <button onClick={submitFunction}>save the segment</button>
+        </div>
+            <div className="footer">
+                <button onClick={submitFunction} className="save-btn">save the segment</button>
+                <button className="cancel-btn" onClick={()=> setStatus((pre)=> pre = status)}>cancel</button>
             </div>
 
         </div>

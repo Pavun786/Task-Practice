@@ -1,12 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
-import SegmentModel from './SegmentModel';
+import Home from './Home';
 
+ 
 function App() {
   return (
     <div className="App">
-      <SegmentModel/>
-    </div>
+      <Home/>
+     </div>
   );
 }
 

@@ -1,7 +1,65 @@
+
+.home-container{
+   display: flex;
+  
+}
+
+.home-sub1{
+   
+   width: 55%;
+}
+
+.home-sub2{
+   width: 45%;
+}
+
+.home-btn{
+
+   background-color:blueviolet;
+   border: none;
+   padding: 10px;
+   margin: 50px;
+}
+
+.model-close{
+
+   display: none;
+}
+
+
+
 .segment-model-container{
   display: flex;
   flex-direction: column;
   gap:30px;
+  /* width: 50%; */
+  justify-content: space-between;
+  /* background-color: aquamarine; */
+  height: 100vh;
+}
+
+.model-heading{
+   height: 10%;
+   background-color: aquamarine;
+   color: white;
+   font-size: 20px;
+   font-weight: bold;
+   padding-top: 20px;
+   padding-left: 20px;
+}
+
+.model-field-1{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   padding: 20px;
+   width: fit-content;
+   font-weight:500;
+}
+
+.input{
+   width: 60%;
+   padding: 10px;
 }
 
 .sub3 :nth-child(1){
@@ -16,13 +74,94 @@
    display: flex;
    flex-direction: column;
    padding: 30px;
+   margin-left: 20px;
   
 }
 
+.sub3{
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   padding: 20px;
+   width: fit-content;
+   font-weight:500;
+}
+
+.footer{
+   display: flex;
+   gap: 20px;
+   padding: 20px;
+   font-weight:500;
+   background-color: rgb(221, 221, 213);
+}
+
+.save-btn{
+   background-color:midnightblue;
+   color: white;
+   border: none;
+   padding: 10px;
+}
+
+.cancel-btn{
+   background-color:whitesmoke;
+   color: red;
+   border: none;
+   padding: 10px;
+   font-weight: bolder;
+}
+
+.selection-drop{
+   padding: 5px;
+}
+
+
 .selection{
   margin: 10px;
+  width: 70%;
 }
 
 .add-btn:hover {
    cursor: pointer;
+}
+
+.select-list-items{
+  
+   background-color: aquamarine;
+}
+
+@media screen and (max-width : 870px) {
+   
+   .home-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .blue-box{
+      width: 50%;
+   }
+}
+
+@media screen and (max-width : 600px) {
+   .home-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .home-sub1{
+   
+      width: 90%;
+      margin: auto;
+   }
+   
+   .home-sub2{
+      width: 90%;
+      margin: auto;
+      background-color:black;
+      color: whitesmoke;
+   }
+
+
 }
